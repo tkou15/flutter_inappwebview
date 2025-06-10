@@ -127,9 +127,8 @@ public class InAppWebViewChromeClient extends WebChromeClient implements PluginR
       this.inAppBrowserDelegate.getActivityResultListeners().add(this);
     }
 
-    if (plugin.registrar != null)
-      plugin.registrar.addActivityResultListener(this);
-    else if (plugin.activityPluginBinding != null)
+    // Flutter 2以降のAPIのみサポート: registrar関連を削除
+    if (plugin.activityPluginBinding != null)
       plugin.activityPluginBinding.addActivityResultListener(this);
   }
 
